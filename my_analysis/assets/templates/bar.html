@@ -1,0 +1,18 @@
+<div class="bar">
+    <h4>${name}</h4>
+    <div class="scorebar">
+        <div class="outer bar">
+            <div class="inner bar" style="width: ${current_score}%;">
+            %if showb: 
+            ${mean_est}
+            %endif
+            </div>
+            <div class="tick" style="left: 0">
+                0%
+            </div>
+            <div class="right tick" style="right: 0%">
+                100%
+            </div>
+        </div>
+    </div>
+</div>

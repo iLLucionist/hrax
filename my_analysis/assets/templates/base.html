@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>${title}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+        % for x in css:
+        <link href="file://${x}" rel="stylesheet">
+        % endfor
+        <style>
+            %if debug: 
+            .slide { display: none; }
+            .visible.slide { display: block; }
+            %endif
+            #navbar {
+                position: absolute;
+                bottom: 1rem;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+
+            #navbar ul {
+                display: inline-block;
+                margin:0;
+                padding:0;
+                border-radius: 5px;
+                background-color: rgba(0,0,0,0.5);
+                color: #fff;
+                list-style: none;
+                text-align: center;
+            }
+
+            #navbar ul li {
+                display: inline-block;
+            }
+            #navbar ul li a {
+                display: block;
+                padding: 0.5rem 1rem;
+                color: #fff;
+                font-weight: 900;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="slides">
+            ${slides}
+        </div>
+
+        %if debug: 
+        <div id="navbar">
+            <ul>
+                <li><a id="previous-slide" href="#">Vorige</a></li>
+                <li><span id="slide-counter" class="counter">1 / 10</span></li>
+                <li class="symbol"><a href="#">&#8505;</a></li>
+                <li><a id="next-slide" href="#">Volgende</a></li>
+            </ul>
+        </div>
+
+        %for x in js:
+        <script src="${x}"></script>
+        %endfor
+
+        %endif
+    </body>
+</html>

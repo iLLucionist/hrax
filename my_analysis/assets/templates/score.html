@@ -1,0 +1,30 @@
+<div class="score">
+    <h4>${name}
+    %if prev_mark:
+    ${prev_mark_text}
+    %endif
+    </h4>
+
+    <div class="explanation">
+        <p>${definition}</p>
+    </div>
+
+    <div class="scorebar">
+        <div class="outer bar">
+            <div class="inner bar" style="width: ${current_score_per_width}%;"></div>
+            <div class="before marker" style="left: ${low10_grade_per}%">
+                <span>L10</span>
+            </div>
+            %if prev_score:
+            <div class="above marker" style="left: ${prev_score_per}%">
+                2020
+            </div>
+            %endif
+            <div class="after right marker" style="right: ${high10_grade_per_right}%">
+                <span>H10</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="scorevalue">${current_score}</div>
+</div>

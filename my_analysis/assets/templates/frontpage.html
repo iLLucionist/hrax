@@ -1,0 +1,18 @@
+<div class="front page">
+    <div class="lead">
+        <h2>${title}</h2>
+        <h1>${prefix}${response['value']}</h1>
+    </div>
+
+    <div class="stats">
+        <ul>
+            <li><span>Aantal medewerkers</span>${response['size']}</li>
+            <li><span>Aantal respondenten</span>${response['n']}</li>
+            <li><span>Respons</span>${response['respons']}%</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        ${areas['content']}
+    </div>
+</div>
