@@ -97,6 +97,10 @@ data pipeline:
    correct execution order, executes it, and stores the results in an
    data-optimized (e.g., mostly numpy data structures) dictionary.
 
+See here:
+- https://github.com/iLLucionist/nowpipes
+- https://github.com/iLLucionist/nowslides
+
 ### EXTERNAL DEPENDENCIES
 
 This software has a couple python packages as dependencies
@@ -143,7 +147,7 @@ each aggregation level.
 
 ## SPECIFICATION OF REPORT CONTENT
 
-`nowreports` processes `yaml`-based spec files.
+`nowslides` processes `yaml`-based spec files.
 
 ## EXECUTION
 
