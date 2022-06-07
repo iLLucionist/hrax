@@ -2,8 +2,11 @@
 
 This repository contains a HR analytics (hrax) pipeline.
 
-This software reads multiple input files, puts them through a data pipeline
-and produces multiple results files.
+This software reads multiple input files, puts them through a data pipeline and
+produces multiple results files.
+
+This pipeline implements the growth potential algorithm, see here:
+https://github.com/iLLucionist/growthp
 
 ## THE PIPELINE
 
@@ -31,8 +34,9 @@ There are at least four input files, and a fifth optional one (see
    to calculate and compare scores of previous years with the current year. For
    every nesting or aggregate level (e.g., organisation-level, team-level, job
    type-level) a csv file corresponding to the nesting name can be specified
-   (see `config.py`). The data pipeline then automatically calculates comparison
-   scores between the current data and this previous data (see `prev.py`).
+   (see `config.py`). The data pipeline then automatically calculates
+   comparison scores between the current data and this previous data (see
+   `prev.py`).
 
 ### PROCESSING
 
@@ -103,24 +107,23 @@ See here:
 
 ### EXTERNAL DEPENDENCIES
 
-This software has a couple python packages as dependencies
-(see `pyproject.toml`).
+This software has a couple python packages as dependencies (see
+`pyproject.toml`).
 
 ## INSTALLATION
 
 The easiest way to get this up and running is to use `poetry` to make a
-self-contained python environment, and install the according dependencies.
-From within this environment, everything can be run.
+self-contained python environment, and install the according dependencies. From
+within this environment, everything can be run.
 
 **IMPORTANT**: there are two extra dependencies (see this github page) that I
-have also developed as supporting frameworks to structure the data pipeline
-and to separate responsibilities:
+have also developed as supporting frameworks to structure the data pipeline and
+to separate responsibilities:
 
-- `nowslides`, which takes the resulting data structures and generates
-  HTML/CSS
+- `nowslides`, which takes the resulting data structures and generates HTML/CSS
 - `nowpipes`, which is a micro-framework that uses a decorator function to
-  compose data pipelines, and that automatically determines the right order
-  of execution.
+  compose data pipelines, and that automatically determines the right order of
+  execution.
 
 Finally, the front-end design (HTML/CSS) template files are in `assets/`.
 
@@ -128,8 +131,8 @@ Finally, the front-end design (HTML/CSS) template files are in `assets/`.
 
 All configuration resides in `config.py`, see documentation for options there.
 
-Most importantly, the `outputdir` var at the top is where output files will
-be stored (HTML files and ZIP files).
+Most importantly, the `outputdir` var at the top is where output files will be
+stored (HTML files and ZIP files).
 
 The `datapath` var in the `analysis`-dict is where the input directory should
 be specified, which are all the files the software might read.
@@ -151,22 +154,22 @@ each aggregation level.
 
 ## EXECUTION
 
-The execution flow is straightforward, and there is a separation into two
-broad responsibilities:
+The execution flow is straightforward, and there is a separation into two broad
+responsibilities:
 
 1. The `analysis`-module calculates results, generates a dump excel-sheet
-(`output_files`) and a transformed dataset that has results added as columns
-to the input survey file (see `svfile` in `config.py`).
+   (`output_files`) and a transformed dataset that has results added as columns
+   to the input survey file (see `svfile` in `config.py`).
 
 2. The `reports`-module uses these results to make HTML reports, then PDFs,
-then ZIP-files.
+   then ZIP-files.
 
 This software can be used in two ways:
 
 1. Use `runint.py` to calculate results, and use `ipython` or `python3 -I` to
-   drop into an interactive shell. You can now use the `results`-object and
-   use pandas queries to inspect the results. Reports will not be generated.
+   drop into an interactive shell. You can now use the `results`-object and use
+   pandas queries to inspect the results. Reports will not be generated.
 
 2. Use `run.py` to also make reports. You can use this as a python-based
-   commandline tool (e.g. `python3 run.py <OPTS AND ARGS>`). Look at
-   `run.py` for commandline parameters and toggles.
+   commandline tool (e.g. `python3 run.py <OPTS AND ARGS>`). Look at `run.py`
+   for commandline parameters and toggles.
